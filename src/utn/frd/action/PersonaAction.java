@@ -14,8 +14,10 @@ public class PersonaAction extends ActionSupport {
 	private String name; 
 	private String age; 
 	private String gender; 
-	List<Persona>personas;
+	private List<Persona>personas;
 	
+	
+
 	public String save(){ 
 		personas = PersistentManager.getInstance(); 
 		int edad = 0; 
@@ -64,7 +66,15 @@ public class PersonaAction extends ActionSupport {
 		this.gender = gender;
 	}
 
-	public String execute() throws Exception{//inicializar coleccion
+	public List<Persona> getPersonas() {
+		return personas;
+	}
+
+	public void setPersonas(List<Persona> personas) {
+		this.personas = personas;
+	}
+	
+	public String execute(){//inicializar coleccion
 		personas = PersistentManager.getInstance();
 		
 		return SUCCESS;
