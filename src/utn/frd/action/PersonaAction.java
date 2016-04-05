@@ -79,4 +79,13 @@ public class PersonaAction extends ActionSupport {
 		
 		return SUCCESS;
 	}
+	
+	public void delete(long id){
+		personas.remove(id);
+		
+	}
+	
+	public void edit(long id){
+		//TODO
+	}
 }
