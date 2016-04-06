@@ -14,33 +14,17 @@ public class PersonaAction extends ActionSupport {
 	private String name; 
 	private String age; 
 	private String gender; 
-	private List<Persona>personas;
-	
-	
+	private String id;
+	public String getId() {
+		return id;
+	}
 
-	public String save(){ 
-		personas = PersistentManager.getInstance(); 
-		int edad = 0; 
-		 
-		try{ 
-		edad = Integer.parseInt(age); 
-		}catch(Exception e){ 
-		addActionError("Ocurrió un error con la edad"); 
-		return ERROR; 
-		} 
-		 
-		try{
-		Persona p = new Persona(personas.size(), name, edad, gender); //creo la persona
-		personas.add(p);//agrego una persona a la lista personas
-		System.out.println(personas.size());
-		}catch(Exception e){
-			addActionError("Ocurrio un error al crear la persona");
-			return ERROR;
-		}
-		
-	
-		return SUCCESS; 
-		}
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+	private List<Persona>personas;
 	
 	public String getName() {
 		return name;
@@ -80,12 +64,54 @@ public class PersonaAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	public void delete(long id){
-		personas.remove(id);
+	public String save(){ 
+		personas = PersistentManager.getInstance(); 
+		int edad = 0; 
+		 
+		try{ 
+		edad = Integer.parseInt(age); 
+		}catch(Exception e){ 
+		addActionError("Ocurrió un error con la edad"); 
+		return ERROR; 
+		} 
+		 
+		try{
+			Persona p = new Persona(personas.size(), name, edad, gender); //creo la persona
+			personas.add(p);//agrego una persona a la lista personas
+			//System.out.println(personas.size());
+		}catch(Exception e){
+			addActionError("Ocurrio un error al crear la persona");
+			return ERROR;
+		}
 		
-	}
 	
-	public void edit(long id){
+			return SUCCESS; 
+		}
+	
+	public String delete(){
+		personas = PersistentManager.getInstance();
+		int idElegido=0;
+		try{ 
+			idElegido = Integer.parseInt(id); 
+			}catch(Exception e){ 
+			addActionError("Ocurrió un error"); 
+			return ERROR; 
+			} 
+		//System.out.println(personas.size());
+		
+		try{
+			personas.remove(idElegido);
+		}catch(Exception e){
+			addActionError("Ocurrio un error al eliminar la persona");
+			return ERROR;
+		}
+			return SUCCESS; 
+	}
+		
+	
+	public void edit(){
 		//TODO
 	}
+	
+
 }

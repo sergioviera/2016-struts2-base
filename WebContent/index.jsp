@@ -21,7 +21,7 @@
 	
 	<p>
 		
-		<a href="<s:url action='save'/>">Crear Persona</a>
+		<a href="<s:url action='save'/>">ABM</a>
 	
 	</p>
 	
