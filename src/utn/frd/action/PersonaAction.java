@@ -109,9 +109,31 @@ public class PersonaAction extends ActionSupport {
 	}
 		
 	
-	public void edit(){
-		//TODO
-	}
+	public String edit(){
+		personas = PersistentManager.getInstance();
+		int idElegido=0;
+		int edad = 0;
+		try{ 
+			idElegido = Integer.parseInt(id); 
+			edad = Integer.parseInt(age);
+			}catch(Exception e){ 
+			addActionError("Ocurrió un error"); 
+			return ERROR; 
+			} 
+			//System.out.println(personas.size());
+			
+		try{
+			Persona p = personas.get(idElegido);
+			p.setGender(getGender());
+			p.setName(getName());
+			p.setAge(edad);
+		}catch(Exception e){
+			addActionError("Ocurrio un error al modificar la persona");
+			return ERROR;
+			}
+			return SUCCESS;
+		}
+}
 	
 
-}
+
