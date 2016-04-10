@@ -1,0 +1,1 @@
+- el link ABM en la página principal redirecciona a la acción "save" lo cual genera un error.
